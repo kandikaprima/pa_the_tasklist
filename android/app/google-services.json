@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "252738240506",
+    "project_id": "the-tasklist-pa-mobile",
+    "storage_bucket": "the-tasklist-pa-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252738240506:android:fb9b8740c8fae28809ee43",
+        "android_client_info": {
+          "package_name": "com.example.pa_the_tasklist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252738240506-5rp86rhls8lagpdobt1sh034q82maje2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdmlDVYwCZu11HXv91w0eGiZrodmCdfyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252738240506-5rp86rhls8lagpdobt1sh034q82maje2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252738240506:android:1ec46f69cda16d6c09ee43",
+        "android_client_info": {
+          "package_name": "com.example.the_tasklist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252738240506-5rp86rhls8lagpdobt1sh034q82maje2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdmlDVYwCZu11HXv91w0eGiZrodmCdfyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252738240506-5rp86rhls8lagpdobt1sh034q82maje2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
