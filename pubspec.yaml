@@ -18,6 +18,7 @@ dependencies:
   get: ^4.6.5
   flutter_datetime_picker: ^1.5.1
   intl: ^0.17.0
+  animated_theme_switcher: ^2.0.1-nullsafety.0
 
 dev_dependencies:
   flutter_test:

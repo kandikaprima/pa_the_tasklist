@@ -1,18 +1,18 @@
-import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+// import 'package:flutter/cupertino.dart';
+// import 'package:get/get.dart';
 
-class LoginController extends GetxController{
-  var username = ''.obs;
-  var password = ''.obs;
+// class LoginController extends GetxController{
+//   var username = ''.obs;
+//   var password = ''.obs;
 
-  final TextEditingController usernameCtrl = TextEditingController();
-  final TextEditingController passwprdCtrl = TextEditingController();
+//   final TextEditingController usernameCtrl = TextEditingController();
+//   final TextEditingController passwprdCtrl = TextEditingController();
 
-  // @override
-  // void onClose() {
-  //   // TODO: implement onClose
-  //   usernameCtrl.dispose();
-  //   passwprdCtrl.dispose();
-  //   super.onClose();
-  // }
-}
+//   @override
+//   void onClose() {
+//     // TODO: implement onClose
+//     usernameCtrl.dispose();
+//     passwprdCtrl.dispose();
+//     super.onClose();
+//   }
+// }

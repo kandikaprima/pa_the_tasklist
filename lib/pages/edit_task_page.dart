@@ -6,20 +6,26 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:pa_the_tasklist/widgets/custom_text_field.dart';
 
-class InputPage extends StatefulWidget {
-  InputPage({Key? key,
-  required this.username,
-  }) : super(key: key);
+class EditPage extends StatefulWidget {
+  const EditPage(
+    {Key? key,
+    required this.titleTask,
+    required this.date,
+    required this.deskripsi,
+    required this.kategori,
+    required this.userName,
+    required this.id
+    }) : super(key: key);
 
-  final String username;
+  final String titleTask, date, deskripsi, kategori,userName, id;
 
   @override
-  State<InputPage> createState() => _InputState();
+  State<EditPage> createState() => _EditState();
 }
 
 enum Kategori { harian, mingguan, bulanan}
 
-class _InputState extends State<InputPage> {
+class _EditState extends State<EditPage> {
   final TextEditingController dateinput = TextEditingController();
 
   DateTime selectedDate = DateTime.now();
@@ -49,24 +55,22 @@ class _InputState extends State<InputPage> {
     } else if (value == Kategori.mingguan) {
       return "mingguan";
     }
-    return "bulanan";
+    return 'bulanan';
   }
 
   final titleCtrl = TextEditingController();
-  final deskripsiCtrl = TextEditingController();
+  final noteCtrl = TextEditingController();
 
   @override
-    void dispose() {
-      titleCtrl.dispose();
-      deskripsiCtrl.dispose();
-      super.dispose();
-    }
+  void dispose() {
+    titleCtrl.dispose();
+    noteCtrl.dispose();
+    super.dispose();
+  }
 
-  @override
   Widget build(BuildContext context) {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     CollectionReference task = firestore.collection("task");
-
     Future<dynamic> CustomAlert(BuildContext context) {
       return showDialog(
         context: context,
@@ -77,7 +81,7 @@ class _InputState extends State<InputPage> {
                 height: 100,
                 child: Column(
                   children: const [
-                    Text("Task Berhasil di tambahkan"),
+                    Text("Task Berhasil di ubah"),
                   ],
                 )),
             actions: [
@@ -96,7 +100,7 @@ class _InputState extends State<InputPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text("Input Page"),
+        title: Text("Edit Page",),
         backgroundColor: Colors.black,
       ),
       body: Container(
@@ -118,8 +122,7 @@ class _InputState extends State<InputPage> {
                       top: 5,
                     ),
                     child: const Center(
-                      child: Text(
-                        "Input Task Form",
+                      child: Text("Edit Task From",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -129,14 +132,14 @@ class _InputState extends State<InputPage> {
                     ),
                   ),
                   CustomTextField(
-                    title: "Task Name",
-                    hint: "Nama Task",
+                    title: "Judul Task",
+                    hint: widget.titleTask,
                     controller: titleCtrl,
                   ),
                   CustomTextField(
-                    title: "Deskripsi",
-                    hint: "Deskripsi Task",
-                    controller: deskripsiCtrl,
+                    title: "Deskripsi task",
+                    hint: widget.deskripsi,
+                    controller: noteCtrl,
                     maxLines: 12,
                   ),
                   SizedBox(height: 20,),
@@ -190,7 +193,7 @@ class _InputState extends State<InputPage> {
                     controller: dateinput, //editing controller of this TextField
                     decoration: const InputDecoration(
                       icon: Icon(Icons.calendar_today,), //icon of text field
-                      labelText: "Tanggal Task",//label text of field
+                      labelText: "Tanggal Task Terbaru",//label text of field
                     ),
                     readOnly: true,
                     onTap: () async {
@@ -198,8 +201,7 @@ class _InputState extends State<InputPage> {
                         context: context,
                         initialDate: DateTime.now(),
                         firstDate: DateTime(2000), //DateTime.now() - not to allow to choose before today.
-                        lastDate: DateTime(2100)
-                      );
+                        lastDate: DateTime(2100));
                       if (pickedDate != null) {
                         print(
                           pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
@@ -223,21 +225,20 @@ class _InputState extends State<InputPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: () {
-          task.add({
+          task.doc(widget.id).update({
             'title': titleCtrl.text,
             'tanggal': dateinput.text,
-            'deskripsi': deskripsiCtrl.text,
-            'user': widget.username,
+            'deskripsi': noteCtrl.text,
+            'user': widget.userName,
             'kategori': getKategori(kategori),
           });
-          CustomAlert(context);
-            Timer(
-              Duration(seconds: 3), () =>
-              Get.back()
-            );
-        }, 
-        tooltip: "Input Button",
-        child: Icon(Icons.add)
+          Timer(
+            Duration(seconds: 1),
+            () => Get.back()
+          );
+        },
+        tooltip: "Edit Button",
+        child: Icon(Icons.edit)
       ),
     );
   }

@@ -7,9 +7,10 @@ class CustomCardTask extends StatelessWidget {
   final String deskripsi;
   final String kategori;
   final VoidCallback? onTap;
+  final Function? onDelete;
   // final bool canDelete;
 
-  CustomCardTask(this.title, this.tanggal, this.deskripsi, this.kategori, {this.onTap});
+  CustomCardTask(this.title, this.tanggal, this.deskripsi, this.kategori, {this.onTap, this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +21,12 @@ class CustomCardTask extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
           border: Border.all(color: Colors.black),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(width: 10,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -37,30 +38,24 @@ class CustomCardTask extends StatelessWidget {
                 Text(tanggal),
               ],
             ),
-            // canDelete
-            //   ? Flexible(
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.end,
-            //         children: [
-            //           Container(
-            //             width: 60,
-            //             height: 60,
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(10),
-            //               color: Colors.redAccent,
-            //             ),
-            //             alignment: Alignment.center,
-            //             child: Text(
-            //               "Hapus",
-            //               style: TextStyle(
-            //                 color: Colors.white,
-            //               ),
-            //             ),
-            //           )
-            //         ],
-            //       )
-            //     )
-            //   : SizedBox()
+            SizedBox(
+              height: 60,
+              width: 60,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
+                ),
+                child: const Center(
+                  child: Icon(
+                    Icons.delete,
+                    color:  Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  if (onDelete != null) onDelete!();
+                },
+              ),
+            )
           ],
         ),
       ),

@@ -14,36 +14,42 @@ class LoginPage extends StatelessWidget {
     final TextEditingController passCtrl = TextEditingController();
     TaskController tc = Get.find();
     return Scaffold(
-      body: Container(
+      body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            Image.asset(
-              "assets/logo.png",
-              width: double.infinity,
-            ),
-            SizedBox(height: 20,),
-            CustomTextField(
-              title: "Username",
-              hint: "Masukkan username Anda",
-              controller: usernameInputan.usernameCtrl,
-            ),
-            CustomTextField(
-              title: "Password",
-              hint: "Masukkan password Anda",
-              isSecure: true,
-              controller: passCtrl,
-            ),
-            SizedBox(height: 20,),
-            CustomButton(
-              text: "LOGIN",
-              onTap: () {
-                tc.onLogin();
-                Get.off(Homepage());
-              },
-            ),
+            SizedBox(height: 50,),
+            Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                "assets/logo.png",
+                width: double.infinity,
+              ),
+              SizedBox(height: 20,),
+              CustomTextField(
+                title: "Username",
+                hint: "Masukkan username Anda",
+                controller: usernameInputan.usernameCtrl,
+              ),
+              CustomTextField(
+                title: "Password",
+                hint: "Masukkan password Anda",
+                isSecure: true,
+                controller: passCtrl,
+              ),
+              SizedBox(height: 20,),
+              CustomButton(
+                text: "LOGIN",
+                onTap: () {
+                  tc.onLogin();
+                  Get.off(Homepage());
+                },
+              ),
+            ],
+          ),
           ],
+          
         ),
       ),
     );

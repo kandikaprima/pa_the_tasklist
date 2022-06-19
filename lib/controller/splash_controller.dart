@@ -7,9 +7,8 @@ class SplashScreenController extends GetxController{
 
   @override
   void onReady() {
-    // TODO: implement onReady
     Timer(
-      Duration(seconds: 5),() {
+      const Duration(seconds: 5),() {
         Get.off(LoginPage());
       }
     );

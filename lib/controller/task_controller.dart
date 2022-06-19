@@ -6,16 +6,28 @@ class TaskController extends GetxController{
   var deskripsi = ''.obs;
   var tanggal = ''.obs;
   var username = ''.obs;
+  var kategori = ''.obs;
+  var date = ''.obs;
 
   final TextEditingController titleCtrl = TextEditingController();
   final TextEditingController deskripsiCtrl = TextEditingController();
   final TextEditingController tanggalCtrl = TextEditingController();
+  final TextEditingController kategoriCtrl = TextEditingController();
   final TextEditingController usernameCtrl = TextEditingController();
+  final TextEditingController dateCtrl = TextEditingController();
 
   onLogin(){
     username(usernameCtrl.text);
     username.value = usernameCtrl.text;
   }
+
+  // inputTask(){
+
+  // }
+
+  // editTask(){
+    
+  // }
 
   onPresses(){
     title(titleCtrl.text);
@@ -28,7 +40,6 @@ class TaskController extends GetxController{
 
   @override
   void onClose() {
-    // TODO: implement onClose
     titleCtrl.dispose();
     deskripsiCtrl.dispose();
     tanggalCtrl.dispose();
